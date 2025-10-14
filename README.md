@@ -1,70 +1,174 @@
-# Getting Started with Create React App
+# Website Bán Sách Online - React MVC
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Đây là ứng dụng web bán sách trực tuyến được xây dựng bằng React theo mô hình MVC (Model-View-Controller).
 
-## Available Scripts
+## 🚀 Tính năng
 
-In the project directory, you can run:
+### Đã hoàn thành:
+- ✅ **Trang chủ**: Hiển thị danh sách sách nổi bật
+- ✅ **Chi tiết sách**: Xem thông tin chi tiết và đánh giá sách
+- ✅ **Giỏ hàng**: Thêm, xóa, cập nhật số lượng sản phẩm
+- ✅ **Thanh toán**: Form đặt hàng với thông tin giao hàng
+- ✅ **Xác nhận đơn hàng**: Trang thông báo đặt hàng thành công
+- ✅ **Responsive Design**: Giao diện thân thiện trên mọi thiết bị
+- ✅ **State Management**: Quản lý state với React Context API
 
-### `npm start`
+### Chưa hoàn thành:
+- 🔄 **Tìm kiếm**: Chức năng tìm kiếm sách
+- 🔄 **Đăng nhập/Đăng ký**: Hệ thống xác thực người dùng
+- 🔄 **Danh mục sách**: Lọc sách theo thể loại
+- 🔄 **Đánh giá sách**: Hệ thống đánh giá và bình luận
+- 🔄 **Quản lý đơn hàng**: Theo dõi trạng thái đơn hàng
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🏗️ Kiến trúc MVC
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Model (src/models/)
+- `BookService.js`: Xử lý API calls cho sách
+- `CartService.js`: Quản lý giỏ hàng trong localStorage
+- `OrderService.js`: Xử lý API calls cho đơn hàng
 
-### `npm test`
+### View (src/views/)
+- `HomePage.js`: Trang chủ
+- `BookDetailPage.js`: Trang chi tiết sách
+- `CartPage.js`: Trang giỏ hàng
+- `CheckoutPage.js`: Trang thanh toán
+- `OrderSuccessPage.js`: Trang xác nhận đơn hàng
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Controller (src/contexts/)
+- `BookContext.js`: Quản lý state và logic cho sách
+- `CartContext.js`: Quản lý state và logic cho giỏ hàng
 
-### `npm run build`
+### Components (src/components/)
+- `Header.js`: Header với navigation và search
+- `Footer.js`: Footer với thông tin liên hệ
+- `BookCard.js`: Component hiển thị thông tin sách
+- `LoadingSpinner.js`: Component loading
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠️ Cài đặt và chạy
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Yêu cầu hệ thống:
+- Node.js (phiên bản 14 trở lên)
+- npm hoặc yarn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Cài đặt:
 
-### `npm run eject`
+1. **Clone repository:**
+```bash
+git clone <repository-url>
+cd frontend_luanvan
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Cài đặt dependencies:**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Chạy ứng dụng:**
+```bash
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. **Truy cập ứng dụng:**
+Mở trình duyệt và truy cập `http://localhost:3000`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Scripts có sẵn:
+- `npm start`: Chạy ứng dụng ở chế độ development
+- `npm build`: Build ứng dụng cho production
+- `npm test`: Chạy tests
+- `npm run eject`: Eject khỏi Create React App (không thể hoàn tác)
 
-## Learn More
+## 📁 Cấu trúc thư mục
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+src/
+├── components/          # Các component UI tái sử dụng
+│   ├── Header.js
+│   ├── Footer.js
+│   ├── BookCard.js
+│   └── LoadingSpinner.js
+├── contexts/           # React Context (Controller)
+│   ├── BookContext.js
+│   └── CartContext.js
+├── models/            # Services (Model)
+│   ├── BookService.js
+│   ├── CartService.js
+│   └── OrderService.js
+├── views/             # Pages (View)
+│   ├── HomePage.js
+│   ├── BookDetailPage.js
+│   ├── CartPage.js
+│   ├── CheckoutPage.js
+│   └── OrderSuccessPage.js
+├── utils/             # Utility functions
+├── App.js            # Main App component
+├── index.js          # Entry point
+└── index.css         # Global styles với Tailwind CSS
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🎨 Công nghệ sử dụng
 
-### Code Splitting
+- **React 18**: Thư viện UI chính
+- **React Router**: Điều hướng trang
+- **Tailwind CSS**: Framework CSS
+- **Axios**: HTTP client
+- **Context API**: State management
+- **LocalStorage**: Lưu trữ giỏ hàng
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🔧 Cấu hình Backend
 
-### Analyzing the Bundle Size
+Ứng dụng frontend được thiết kế để kết nối với backend Node.js. Cấu hình API endpoint trong file `src/models/BookService.js`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```javascript
+const API_BASE_URL = 'http://localhost:3000/api';
+```
 
-### Making a Progressive Web App
+Đảm bảo backend đang chạy trên port 3000 và có các endpoint:
+- `GET /api/baiViet` - Lấy danh sách sách
+- `GET /api/baiViet/:id` - Lấy chi tiết sách
+- `GET /api/danhMuc` - Lấy danh mục sách
+- `POST /api/donHang` - Tạo đơn hàng mới
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📱 Responsive Design
 
-### Advanced Configuration
+Ứng dụng được thiết kế responsive với Tailwind CSS:
+- **Mobile**: < 640px
+- **Tablet**: 640px - 1024px  
+- **Desktop**: > 1024px
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🚀 Deployment
 
-### Deployment
+### Build cho production:
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Deploy lên Vercel:
+```bash
+npm install -g vercel
+vercel
+```
 
-### `npm run build` fails to minify
+### Deploy lên Netlify:
+1. Build project: `npm run build`
+2. Upload thư mục `build` lên Netlify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🤝 Đóng góp
+
+1. Fork repository
+2. Tạo feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Tạo Pull Request
+
+## 📄 License
+
+Dự án này được phân phối dưới MIT License.
+
+## 📞 Liên hệ
+
+- Email: support@bookstore.com
+- Website: https://bookstore.com
+
+---
+
+**Lưu ý**: Đây là phiên bản demo. Để sử dụng trong production, cần thêm các tính năng bảo mật, validation, và error handling đầy đủ hơn.
