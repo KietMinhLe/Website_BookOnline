@@ -290,3 +290,23 @@ export const searchSanPham = async (req, res) => {
         res.status(500).json({ mess: "Tìm Kiếm Sản Phẩm Thất Bại !!!", error: error.message });
     }
 };
+
+//Tìm kiếm sản phẩm theo tên
+export const searchSanPhamByTen = async (req, res) => {
+    try {
+        const { tenSanPham } = req.query;
+
+        if (!tenSanPham) {
+            return res.status(400).json({ mess: "Vui lòng nhập tên sản phẩm để tìm kiếm" });
+        }
+
+        //Tìm kiếm sản phẩm theo tên
+        const data = await prisma.sanpham.findMany({
+            where: { tenSanPham: { contains: tenSanPham, mode: 'insensitive' } } // Tìm kiếm không phân biệt chữ hoa thường
+        });
+
+        return res.status(200).json({ mess: "Tìm Kiếm Sản Phẩm Theo Tên Thành Công", data: data });
+    } catch (error) {
+        res.status(500).json({ mess: "Tìm Kiếm Sản Phẩm Theo Tên Thất Bại !!!", error: error.message });
+    }
+}

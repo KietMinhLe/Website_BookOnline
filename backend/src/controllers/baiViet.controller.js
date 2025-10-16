@@ -13,14 +13,30 @@ export const getAllBaiViet = async (req, res) => {
 export const getBaiVietById = async (req, res) => {
     try {
         const { id } = req.params
+
+        //Kiểm tra id có phải là số hay không
+        if (isNaN(id)) {
+            return res.status(400).json({ mess: "ID phải là một số hợp lệ" });
+        }
+
+        //Kiểm tra id có phải là số nguyên dương hay không
+        if (parseInt(id) <= 0) {
+            return res.status(400).json({ mess: "ID phải là một số nguyên dương hợp lệ" });
+        }
+
+        //Lấy bài viết theo ID
         const data = await prisma.baiviet.findUnique({
-            where: {
-                id: parseInt(id)
-            }
+            where: { id: parseInt(id) } //Lấy bài viết theo ID
         });
-        return res.status(200).json({ mess: "Thành Công", data: data });
+
+        //Kiểm tra bài viết có tồn tại không
+        if (!data) {
+            return res.status(404).json({ mess: "Bài Viết Không Tồn Tại" });
+        }
+
+        return res.status(200).json({ mess: "Lấy Bài Viết Thành Công", data: data });
     } catch (error) {
-        return res.status(500).json({ mess: "Thất Bại !!!", error: error.message });
+        return res.status(500).json({ mess: "Lấy Bài Viết Thất Bại !!!", error: error.message });
     }
 }
 
